@@ -250,8 +250,8 @@ def bar_chart():
 if __name__ == "__main__":
     # show, use plt.show() for blocking
     # X, y = import_data("dataLinReg2D.txt")
-    X, y = import_data("dataQuadReg2D.txt")
-    # X, y = import_data("dataQuadReg2D_noisy.txt")
+    # X, y = import_data("dataQuadReg2D.txt")
+    X, y = import_data("dataQuadReg2D_noisy.txt")
 
     # prep for linear reg.
     X = prepend_one(X)
