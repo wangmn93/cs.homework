@@ -1,0 +1,27 @@
+lambda  0.1
+Q mean reward after 300 iterations  -25.63
+Q mean steps after 300 iterations  21.67
+lambda  0.2
+Q mean reward after 300 iterations  -19.78
+Q mean steps after 300 iterations  18.79
+lambda  0.3
+Q mean reward after 300 iterations  -22.35
+Q mean steps after 300 iterations  17.4
+lambda  0.4
+Q mean reward after 300 iterations  -20.69
+Q mean steps after 300 iterations  18.71
+lambda  0.5
+Q mean reward after 300 iterations  -22.43
+Q mean steps after 300 iterations  18.47
+lambda  0.6
+Q mean reward after 300 iterations  -22.86
+Q mean steps after 300 iterations  17.91
+lambda  0.7
+Q mean reward after 300 iterations  -19.92
+Q mean steps after 300 iterations  18.93
+lambda  0.8
+Q mean reward after 300 iterations  -21.53
+Q mean steps after 300 iterations  16.58
+lambda  0.9
+Q mean reward after 300 iterations  -102.69
+Q mean steps after 300 iterations  4.68
