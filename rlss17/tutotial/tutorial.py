@@ -5,7 +5,7 @@ env = wrappers.Monitor(env, '/tmp/cartpole-experiment-2')
 for i_episode in range(20):
     observation = env.reset()
     for t in range(100):
-        env.render()
+        env.render(close=True)
         print(observation)
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
