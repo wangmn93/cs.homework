@@ -117,7 +117,7 @@ def one_iterate(y,lambda_,beta,phi):
 
 
 if __name__ == "__main__":
-    quad = 1
+    quad = 0
     X, y = import_data("data2Class.txt")
     X = prepend_one(X)
     phi = np.copy(X)

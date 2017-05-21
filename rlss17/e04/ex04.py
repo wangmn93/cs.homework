@@ -51,11 +51,11 @@ def eps_greedy(current,eps=.1):
     return  action
 
 def learning(agent='SARSA',maxEpisode=800,goal = (4,8)):
-    # initialize q_value
-    for i in range(1, 8, 1):
-        for j in range(1, 11, 1):
-            for k in actions:
-                q_value[((i, j), k)] = 0.
+    # # initialize q_value
+    # for i in range(1, 8, 1):
+    #     for j in range(1, 11, 1):
+    #         for k in actions:
+    #             q_value[((i, j), k)] = 0.
 
     steps = 0
     steps2 = 0
@@ -126,12 +126,25 @@ def visualizePolicy(goal):
 #     print q_value[((5,6),i)]
 if __name__ == "__main__":
     goal = (4,8)
-    steps_list_sarsa, steps_list2_sarsa = learning('SARSA',maxEpisode = 400)
+
+    # initialize q_value
+    for i in range(1, 8, 1):
+        for j in range(1, 11, 1):
+            for k in actions:
+                q_value[((i, j), k)] = 0.
+
+    steps_list_sarsa, steps_list2_sarsa = learning('SARSA',maxEpisode = 100)
     visualizePolicy(goal)
     plt.plot(steps_list_sarsa,'r',label='SARSA')
     print mean(steps_list2_sarsa[len(steps_list2_sarsa)/2:])
 
-    steps_list_q, steps_list2_q = learning('Q',maxEpisode = 400)
+    # initialize q_value
+    for i in range(1, 8, 1):
+        for j in range(1, 11, 1):
+            for k in actions:
+                q_value[((i, j), k)] = 0.
+
+    steps_list_q, steps_list2_q = learning('Q',maxEpisode = 100)
     visualizePolicy(goal)
     plt.plot(steps_list_q,'b', label='Q')
     print mean(steps_list2_q[len(steps_list2_q)/2:])
@@ -139,10 +152,11 @@ if __name__ == "__main__":
     pylab.legend(loc='upper left')
     plt.show()
 
-    goals = [(3,8),(5,8),(4,7),(4,9),(3,7),(5,9),(5,7),(3,9)]
+    goals = [(3,8),(5,8),(4,7),(4,9),(5,9),(5,7),(3,9)]
     for goal in goals:
+        print goal
         steps_list_q, steps_list2_q = learning('Q', maxEpisode=800,goal=goal)
-        visualizePolicy(goal)
+    visualizePolicy((3,8))
 
 
 
