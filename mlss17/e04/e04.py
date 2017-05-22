@@ -51,12 +51,12 @@ def import_data(filename):
     # print "y.shape:", y.shape
 
     # 3D plotting
-    # fig = plt.figure()
-    # ax = fig.add_subplot(111, projection='3d')  # the projection arg is important!
-    # ax.scatter(X[:, 0], X[:, 1], y, color="red")
-    # ax.set_title("raw data")
-    # plt.draw()
-    # plt.show()
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')  # the projection arg is important!
+    ax.scatter(X[:, 0], X[:, 1], y, color="red")
+    ax.set_title("raw data")
+    plt.draw()
+    plt.show()
     return X,y
 
 def quad_feature(X):
@@ -117,7 +117,7 @@ def one_iterate(y,lambda_,beta,phi):
 
 
 if __name__ == "__main__":
-    quad = 0
+    quad = 1
     X, y = import_data("data2Class.txt")
     X = prepend_one(X)
     phi = np.copy(X)
@@ -129,7 +129,7 @@ if __name__ == "__main__":
 
     for i in range(20):
         one_iterate(y,.5,beta,phi)
-    print beta
+    # print beta
     if quad:
         predict(beta,X,y,phi,1)
     else:

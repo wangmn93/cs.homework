@@ -2,6 +2,7 @@ import numpy as np
 import math
 from numpy.linalg import inv
 import gym
+import random
 
 import pylab
 actions = [0,1,2]
@@ -49,28 +50,44 @@ def generateCenter(range1,n, range2, m):
     return center1,center2
 
 
-def one_iteration(current,next,reward,beta,alpha=.1):
-    #todo
-    diff = reward + np.dot(beta,next)-np.dot(beta,current)
-    gradient = getFeature(x)#???
-    beta -= alpha*gradient*diff#???
+# def one_iteration(current,next,reward,beta,e,alpha=.1,gamma=.99):
+#     #todo
+#
+#     diff = reward + np.dot(beta,next)-np.dot(beta,current)
+#     gradient = getFeature(x)#???
+#     beta -= alpha*gradient*diff#???
 
 def chooseAction(feature,beta_list):
-    values = [np.dot(beta_list[action],feature) for action in actions]
-    return values.index(max(values))
+    action = random.choice(actions)
+    maxValue = np.dot(feature,beta_list[action])
+    for a in actions:
+        if np.dot(feature,beta_list[a])>maxValue:
+            maxValue = np.dot(feature,beta_list[a])
+            action = a
+    return action
 
 if __name__ == "__main__":
     env = gym.make('MountainCar-v0')
     beta_list = [np.zeros(33),np.zeros(33),np.zeros(33)]#weight vector with zeros
+    e_list = [np.zeros(33),np.zeros(33),np.zeros(33)]
+    gamma = .99
+    lambda_ = .3
+    alpha = .1
+
     #covaranice = np.array([.04, .0004])
     for i_episode in range(5):
         observation = env.reset()  # initialize S
         x = np.array([observation[0], observation[1]])
         feature = getFeature(x)
-        for t in range(10):
+        for t in range(10000):
+            #print t
             env.render(close=True)  # turn off animation
-            action = chooseAction(feature)
+
+            action = chooseAction(feature,beta_list)#greedy
+            #print feature
+            #print action
             observation, reward, done, info = env.step(action)  # perform action
+
             #print RBF(np.array([1,2]),np.array([1,1]),np.array([1,1]))
             #print getFeature(np.array([-.5,0.05]))
             if observation[0] >= .5:  # reward
@@ -79,6 +96,22 @@ if __name__ == "__main__":
                 reward = -1
             next_x = np.array([observation[0],observation[1]])#continuous state space
             next_feature = getFeature(next_x)
-            one_iteration(feature,next_feature,reward,beta_list[action])#update weight vector
+            e_list[action] += feature
+            if observation[0]>=.5:
+                #different iteration
+                #one_iteration(feature, next_feature, reward, beta_list[action], e_list[action])
+                diff = reward-np.dot(feature,beta_list[action])
+                beta_list[action] += alpha*e_list[action]*diff
+                print "episode finished ",t
+                break
+            maxAction = chooseAction(next_feature,beta_list)
+           # one_iteration(feature,next_feature,reward,beta_list[maxAction],e_list[action])#update weight vector
+            #gradient decent
+            diff = reward+gamma*np.dot(next_feature,beta_list[maxAction])-np.dot(feature,beta_list[action])
+            beta_list[action] += alpha*e_list[action]*diff
+
+            e_list[action]*=gamma*lambda_
+            feature = next_feature
+        print beta_list
     #generateCenter((-1.2,.5),4,(-0.07,.07),8)
     #print getFeature(np.array([-1.,0.])).shape
