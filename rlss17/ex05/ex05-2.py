@@ -44,21 +44,13 @@ def generateCenter(range1,n, range2, m):
     range1_span = (range1[1]-range1[0])/(n-1)
     range2_span = (range2[1]-range2[0])/(m-1)
     center1 = [range1[0]+i*range1_span for i in range(n)]
-    center2 = [range2[0]+i*range1_span for i in range(m)]
+    center2 = [range2[0]+i*range2_span for i in range(m)]
     #print center1
     #print center2
     return center1,center2
 
-
-# def one_iteration(current,next,reward,beta,e,alpha=.1,gamma=.99):
-#     #todo
-#
-#     diff = reward + np.dot(beta,next)-np.dot(beta,current)
-#     gradient = getFeature(x)#???
-#     beta -= alpha*gradient*diff#???
-
 def chooseAction(feature,beta_list):
-    action = random.choice(actions)
+    action = random.choice(actions)#random tile breaker
     maxValue = np.dot(feature,beta_list[action])
     for a in actions:
         if np.dot(feature,beta_list[a])>maxValue:
@@ -69,17 +61,26 @@ def chooseAction(feature,beta_list):
 if __name__ == "__main__":
     env = gym.make('MountainCar-v0')
     beta_list = [np.zeros(33),np.zeros(33),np.zeros(33)]#weight vector with zeros
-    e_list = [np.zeros(33),np.zeros(33),np.zeros(33)]
+    e_list = [np.zeros(33),np.zeros(33),np.zeros(33)]#eligible trace
     gamma = .99
-    lambda_ = .3
-    alpha = .1
+    lambda_ = .7
+    alpha = .001
+    # for i in range(1):
+    #     observation = env.reset()
+    #     print observation
+    #     x = np.array([observation[0], observation[1]])
+    #     feature = getFeature(x)
+    #     print feature
 
-    #covaranice = np.array([.04, .0004])
-    for i_episode in range(5):
+    old_beta_list = np.copy(beta_list)
+
+    covariance = np.array([.04, .0004])
+    for i_episode in range(200):
+        print i_episode,
         observation = env.reset()  # initialize S
         x = np.array([observation[0], observation[1]])
         feature = getFeature(x)
-        for t in range(10000):
+        for t in range(5000):
             #print t
             env.render(close=True)  # turn off animation
 
@@ -102,16 +103,21 @@ if __name__ == "__main__":
                 #one_iteration(feature, next_feature, reward, beta_list[action], e_list[action])
                 diff = reward-np.dot(feature,beta_list[action])
                 beta_list[action] += alpha*e_list[action]*diff
-                print "episode finished ",t
+                print "episode finished ",t,
                 break
             maxAction = chooseAction(next_feature,beta_list)
            # one_iteration(feature,next_feature,reward,beta_list[maxAction],e_list[action])#update weight vector
             #gradient decent
             diff = reward+gamma*np.dot(next_feature,beta_list[maxAction])-np.dot(feature,beta_list[action])
             beta_list[action] += alpha*e_list[action]*diff
-
+            #print diff
             e_list[action]*=gamma*lambda_
             feature = next_feature
-        print beta_list
+       # print beta_list
     #generateCenter((-1.2,.5),4,(-0.07,.07),8)
     #print getFeature(np.array([-1.,0.])).shape
+        difference = 0
+        for k in range(3):
+            difference += np.dot(old_beta_list[k] - beta_list[k], old_beta_list[k] - beta_list[k])
+        print "diff of beta ",math.sqrt(difference)
+        old_beta_list = np.copy(beta_list)
