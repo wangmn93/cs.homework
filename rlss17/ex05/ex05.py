@@ -20,19 +20,19 @@ for i in range(0, 21, 1):
             q_value[((i, j), k)] = 0.
             e[((i, j), k)] = 0.
 
-def eps_greedy2(current,eps=.0):
-    # eps greedy
-    if random.uniform(0, 1) < eps:
-        action = random.choice(actions)
-    else:
-        i_action = random.choice(actions)#random initial action choice
-        maxValue = q[current[0]][current[1]][i_action]
-        action = i_action
-        for i in actions:
-            if q[current[0]][current[1]][i_action] > maxValue:
-                maxValue = q[current[0]][current[1]][i]
-                action = i
-    return  action
+# def eps_greedy2(current,eps=.0):
+#     # eps greedy
+#     if random.uniform(0, 1) < eps:
+#         action = random.choice(actions)
+#     else:
+#         i_action = random.choice(actions)#random initial action choice
+#         maxValue = q[current[0]][current[1]][i_action]
+#         action = i_action
+#         for i in actions:
+#             if q[current[0]][current[1]][i_action] > maxValue:
+#                 maxValue = q[current[0]][current[1]][i]
+#                 action = i
+#     return  action
 
 
 def eps_greedy(current,eps=.0):
@@ -56,6 +56,10 @@ def discretizeStates(observation):
 if __name__ =="__main__":
     steps = []
     #pylab.show()
+    # plt.figure()
+    # pylab.show(block=False)
+    plt.ion()
+    plt.show()
     for i_episode in range(100):
         observation = env.reset() #initialize S
         cState = discretizeStates(observation)
@@ -99,15 +103,23 @@ if __name__ =="__main__":
             for j in range(0, 21, 1):
                 for k in actions:
                     q[i][j][k] = q_value[((i, j), k)]
-        pylab.pcolor(q.max(2))
-        pylab.draw()
-        if i_episode%10 == 0:
-            pylab.show(block=False)
+        plt.pcolor(q.max(2))
+        #pylab.pcolor(q.max(2))
+        #pylab.ion()
+        plt.draw()
+        plt.pause(0.001)
+        #input("Press [enter] to continue.")
+        #plt.show(block=False)
+        # if i_episode%1 == 0:
+        #     #plt.draw()
+        #     pylab.show(block=False)
+        #     print "show"
 
     #pylab.show()
-    print steps
+    print steps #steps contains the steps of successful epidsode
     #print q.max(2)
     #print q.max(2).shape
+    plt.ioff()
     plt.figure()
     plt.plot(steps)
     plt.show()
