@@ -3,6 +3,7 @@ import math
 from numpy.linalg import inv
 import gym
 import random
+from matplotlib import  pyplot as plt
 
 import pylab
 actions = [0,1,2]
@@ -73,9 +74,9 @@ if __name__ == "__main__":
     #     print feature
 
     old_beta_list = np.copy(beta_list)
-
+    step_list = []
     covariance = np.array([.04, .0004])
-    for i_episode in range(200):
+    for i_episode in range(50):
         print i_episode,
         observation = env.reset()  # initialize S
         x = np.array([observation[0], observation[1]])
@@ -104,6 +105,7 @@ if __name__ == "__main__":
                 diff = reward-np.dot(feature,beta_list[action])
                 beta_list[action] += alpha*e_list[action]*diff
                 print "episode finished ",t,
+                step_list.append(t)
                 break
             maxAction = chooseAction(next_feature,beta_list)
            # one_iteration(feature,next_feature,reward,beta_list[maxAction],e_list[action])#update weight vector
@@ -121,3 +123,6 @@ if __name__ == "__main__":
             difference += np.dot(old_beta_list[k] - beta_list[k], old_beta_list[k] - beta_list[k])
         print "diff of beta ",math.sqrt(difference)
         old_beta_list = np.copy(beta_list)
+
+    plt.plot(step_list)
+    plt.show()
