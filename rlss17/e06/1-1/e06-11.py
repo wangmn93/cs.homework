@@ -78,7 +78,7 @@ def getFeature(state, action):
         feature[5] = state ** 2
     return feature
 
-def getFeature2(state,action):
+def getFeature2(state, action):
     feature = np.zeros(10)
     if action == L:
         feature[0] = 1

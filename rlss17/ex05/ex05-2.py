@@ -4,6 +4,7 @@ from numpy.linalg import inv
 import gym
 import random
 from matplotlib import  pyplot as plt
+import csv
 
 import pylab
 actions = [0,1,2]
@@ -76,7 +77,8 @@ if __name__ == "__main__":
     old_beta_list = np.copy(beta_list)
     step_list = []
     covariance = np.array([.04, .0004])
-    for i_episode in range(50):
+    exp_list = []
+    for i_episode in range(200):
         print i_episode,
         observation = env.reset()  # initialize S
         x = np.array([observation[0], observation[1]])
@@ -99,6 +101,7 @@ if __name__ == "__main__":
             next_x = np.array([observation[0],observation[1]])#continuous state space
             next_feature = getFeature(next_x)
             e_list[action] += feature
+            exp_list.append((feature,action,reward,next_feature))
             if observation[0]>=.5:
                 #different iteration
                 #one_iteration(feature, next_feature, reward, beta_list[action], e_list[action])
@@ -123,6 +126,12 @@ if __name__ == "__main__":
             difference += np.dot(old_beta_list[k] - beta_list[k], old_beta_list[k] - beta_list[k])
         print "diff of beta ",math.sqrt(difference)
         old_beta_list = np.copy(beta_list)
+
+    # with open('exp-car.csv', 'wb') as out:
+    #     csv_out = csv.writer(out)
+    #     csv_out.writerow(['currentF', 'action','reward','nextF'])
+    #     for row in exp_list:
+    #         csv_out.writerow(row)
 
     plt.plot(step_list)
     plt.show()
