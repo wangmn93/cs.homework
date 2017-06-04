@@ -13,6 +13,7 @@ if __name__ == "__main__":
         img = plt.imread("yalefaces/%s"%f)
         # print img.shape
         X.append(img.flatten())
+
     X = np.array(X) # data
     mu = np.mean(X,0)# mean image
     center = np.tile(mu,(165,1))# build matrix
