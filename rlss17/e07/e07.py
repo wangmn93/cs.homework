@@ -11,7 +11,7 @@ def cartPole(state,action):
     m1 = .1
     m2 = MASSCART + m1
     LENGTH = .5
-    POLE = MASSCART*LENGTH
+    POLE = m1*LENGTH
     FORCE_MAG = 10.
     TAU = .02
 
@@ -41,10 +41,15 @@ def cartPole(state,action):
 def sampleFromPolicy(mean,std=math.sqrt(0.001)):
     action = 100
     # print mean
+    it = 0
     while abs(action)>10:
+        # print mean
+        if it>10:
+            break
+        it += 1
         action = np.random.normal(loc=mean, scale=std, size=None)
-    # return max([-10.,min([action,10.])])
-    return action
+    return max([-10.,min([action,10.])])
+    # return action
 
 def samplePerturbation(size):
     return np.random.uniform(-1,1,size=size)
@@ -114,22 +119,25 @@ def wolfCondition(alpha,omega,gradient):
 
 if __name__ == "__main__":
     M = 50
-    omega = np.zeros(4)
+    omega = np.ones(4)
     reward_list = []
     alpha = .5
     steps = np.ones(4)*alpha
     prev_g = np.zeros(4)
+    old_expect = 0
     for i in range(200):
         gradientFD = computeAscentGradient(omega,M)
-        if i>50:
-            delta_omega, alpha = wolfCondition(alpha,omega,gradientFD)
+        if old_expect>1200:
+            delta_omega, alpha = wolfCondition(alpha,omega,gradientFD) #wolfe condition+line search
         else:
-            delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4)
-            # delta_omega = alpha*gradientFD/(norm(gradientFD)+0.01)
+            delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4) #adaptive step-size
+            # alpha = 10./(i+1) #decreasing step-size
+            delta_omega = alpha*gradientFD/(norm(gradientFD)+0.01)
         omega += delta_omega
         expectReward = evaluatePolicy(omega)
+        old_expect = expectReward
         reward_list.append(expectReward)
-        print i, expectReward,alpha
+        print i, expectReward,alpha,omega
     plt.plot(reward_list,label="J")
     plt.legend(loc='lower right')
     plt.show()
