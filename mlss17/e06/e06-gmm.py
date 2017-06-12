@@ -55,7 +55,10 @@ def update(X,gammas,K,k):
     return new_pis, new_mus, new_sigmas
 
 def EM_oneit(X,mus,pis,sigmas,init_gammas=None):
-    gammas = np.copy(compute_gammas(X, mus, pis, sigmas))
+    if init_gammas != None:
+        gammas = np.copy(init_gammas)
+    else:
+        gammas = np.copy(compute_gammas(X, mus, pis, sigmas))
     new_pis, new_mus, new_sigmas = update(X, gammas, K, k)
     return new_pis, new_mus, new_sigmas
 
@@ -106,12 +109,14 @@ if __name__=="__main__":
     mus = [X[random.randint(0,len(X)-1)],X[random.randint(0,len(X)-1)],X[random.randint(0,len(X)-1)]]
     sigmas = [np.eye(2),np.eye(2),np.eye(2)]
     init_gammas = []
+
     for x in X:
         gamma = [0]*K
         gamma[random.randint(0,K-1)] = 1
         init_gammas.append(gamma)
     init_gammas = np.array(init_gammas)
-    for i in range(20):
+
+    for i in range(10):
         # gammas = np.copy(compute_gammas(X,mus,pis,sigmas))
         # pis, mus, sigmas = update(X,gammas,K,k)
         if i==0:

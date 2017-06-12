@@ -40,8 +40,10 @@ def cartPole(state,action):
 
 def sampleFromPolicy(mean,std=math.sqrt(0.001)):
     action = 100
+    # print mean
     while abs(action)>10:
         action = np.random.normal(loc=mean, scale=std, size=None)
+    # return max([-10.,min([action,10.])])
     return action
 
 def samplePerturbation(size):
@@ -61,8 +63,7 @@ def evaluatePolicy(omega):
         reward_list.append(sumOfReward)
     return np.mean(np.array(reward_list))
 
-def gradientAccent(old_omega, alpha):
-
+def computeAscentGradient(old_omega,M):
     J = evaluatePolicy(old_omega)
     delta_omega_list = []
     delta_J_list = []
@@ -75,23 +76,60 @@ def gradientAccent(old_omega, alpha):
     dOMEGA = np.array(delta_omega_list)
     dJ = np.array(delta_J_list)
     gradientFD = dot(dot(inv(dot(dOMEGA.T, dOMEGA)), dOMEGA.T), dJ)
-    omega = old_omega+ alpha*gradientFD/(norm(gradientFD)+0.01)
-    # print gradientFD
-    return omega
+    return gradientFD
+
+def Rporp(g_FD,prev_g,steps,k):
+    if len(g_FD)!=len(prev_g):
+        print "dim not match"
+    gradient = np.copy(g_FD)
+    for i in range(k):
+        product = g_FD[i]*prev_g[i]
+        if product > 0 :
+            steps[i] *= 1.2
+            gradient[i] += steps[i]*g_FD[i]/(abs(g_FD[i])+.001)
+            prev_g[i] = g_FD[i]
+        elif product < 0:
+            steps[i] *= .5
+            gradient[i] += steps[i]*g_FD[i]/(abs(g_FD[i])+.001)
+            prev_g[i] = 0
+        else:
+            gradient[i] += steps[i]*g_FD[i]/(abs(g_FD[i])+.001)
+            prev_g[i] = g_FD[i]
+        steps[i] = max([.01,min([5.,steps[i]])])
+    return gradient,prev_g,steps
+
+#wolfe condition
+def wolfCondition(alpha,omega,gradient):
+    a = alpha
+    old_J = evaluatePolicy(omega)
+    a_ls = .01
+    a_p = 1.2
+    a_m = .5
+    gradient_direction = gradient/(norm(gradient)+0.001)
+    while evaluatePolicy(omega+a*gradient)<old_J+a_ls*dot(gradient,a*gradient_direction):
+        a *= a_m
+    delta_omega = a * gradient_direction
+    a *= a_p
+    return delta_omega,a
 
 if __name__ == "__main__":
-    # gamma = 1
     M = 50
-    # print samplePerturbation(4)+omega
     omega = np.zeros(4)
     reward_list = []
-    # print evaluatePolicy(env,omega)
+    alpha = .5
+    steps = np.ones(4)*alpha
+    prev_g = np.zeros(4)
     for i in range(200):
-        alpha = .5
-        omega = gradientAccent(omega, alpha)
+        gradientFD = computeAscentGradient(omega,M)
+        if i>50:
+            delta_omega, alpha = wolfCondition(alpha,omega,gradientFD)
+        else:
+            delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4)
+            # delta_omega = alpha*gradientFD/(norm(gradientFD)+0.01)
+        omega += delta_omega
         expectReward = evaluatePolicy(omega)
         reward_list.append(expectReward)
-        print i, expectReward
+        print i, expectReward,alpha
     plt.plot(reward_list,label="J")
     plt.legend(loc='lower right')
     plt.show()

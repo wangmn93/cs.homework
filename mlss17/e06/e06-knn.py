@@ -10,8 +10,8 @@ def readImg(folder):
     mypath = folder
     onlyfiles = [f for f in listdir(mypath) if f!="Readme.txt"]
     X =[]
-    print len(onlyfiles)
-    print len(listdir(mypath))
+    # print len(onlyfiles)
+    # print len(listdir(mypath))
     for f in onlyfiles:
         img = plt.imread("%s/%s"%(folder,f))
         X.append(img[:,:,0].flatten())#only take first channel
@@ -81,19 +81,22 @@ def PCA(X,p):
 
 if __name__=="__main__":
     X = readImg("yalefaces_cropBackground")
-    # center, Z, vt = PCA(X, 20)
-    # X = Z
-    # k = 20
     k = 243 * 160
-    K=4
+    K = 4
+
+    #PCA
+    center, Z, vt = PCA(X, 20)
+    X = Z
+    k = 20
+
     init = randomInit(K,k,255)
     centers,clusters = knn(init,X,K,k,10)
 
     for mu,cluster in zip(centers,clusters) :
-        # mu = center + np.dot(mu, vt)
+        mu = center + np.dot(mu, vt)
         plt.figure()
         plt.imshow(mu.reshape((243, 160)),cmap="gray")
         plt.figure()
-        # cluster[0] = center + np.dot(cluster[0], vt)
+        cluster[0] = center + np.dot(cluster[0], vt)
         plt.imshow(cluster[0].reshape((243, 160)),cmap="gray")
         plt.show()
