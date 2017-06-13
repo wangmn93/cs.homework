@@ -2,7 +2,7 @@ import numpy as np
 from numpy import dot,multiply
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d.axes3d import Axes3D
-from math import exp
+from math import exp,fabs
 
 def sigmoid(x):
     return 1/(1+exp(-x))
@@ -124,17 +124,18 @@ if __name__=="__main__":
         print gradient.shape
 
     #estimate gradient
-    sumedLoss = 0
-    for it in range(100):
+    # sumedLoss = 0
+    for it in range(500):
         sumedLoss = 0
         for x,y in zip(X,Y):
             x = np.reshape(x,(1,3))
             output,x_record = forward(x,weightMats)
             loss = computeLoss(y,output)
-            sumedLoss += loss
+
+            sumedLoss += max([0,1-output*y])
             weightMats_gradient = backward(np.array([[loss]]), weightMats, x_record)
             for i in range(len(sumedWeightMats)):
-                sumedWeightMats[i] += weightMats_gradient[i]
+                sumedWeightMats[i] -= .05*weightMats_gradient[i]
         print sumedLoss
         weightMats = list(sumedWeightMats)
 
