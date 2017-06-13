@@ -127,7 +127,7 @@ if __name__ == "__main__":
     old_expect = 0
     for i in range(200):
         gradientFD = computeAscentGradient(omega,M)
-        if old_expect>1200:
+        if old_expect>800:
             delta_omega, alpha = wolfCondition(alpha,omega,gradientFD) #wolfe condition+line search
         else:
             delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4) #adaptive step-size

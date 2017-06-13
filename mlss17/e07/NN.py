@@ -80,11 +80,6 @@ def forward(input,weightMats):
     z = forward_one_step(x,weightMats[-1],True)
     return z,x_record
 
-def computeDelta(delta,weightMat,x):
-    temp = dot(delta, weightMat)
-    temp2 = multiply(x, 1 - x).T
-    return multiply(temp, temp2)
-
 def backward_one_step(x,delta,weightMat):
     temp = dot(delta,weightMat)
     temp2 = multiply(x,1-x).T
