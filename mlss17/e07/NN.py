@@ -9,6 +9,18 @@ def sigmoid(x):
 
 element_wise_sigmoid = np.vectorize(sigmoid)
 
+def prepend_one(X):
+    """prepend a one vector to X."""
+    return np.column_stack([np.ones(X.shape[0]), X])
+
+def grid2d(start, end, num=50):
+    """Create an 2D array where each row is a 2D coordinate.
+    np.meshgrid is pretty annoying!
+    """
+    dom = np.linspace(start, end, num)
+    X0, X1 = np.meshgrid(dom, dom)
+    return np.column_stack([X0.flatten(), X1.flatten()])
+
 def import_data(filename):
     # load the data
     data = np.loadtxt(filename)
@@ -22,21 +34,31 @@ def import_data(filename):
     y = data[:,-1]
     return X,y
 
-def plot3Ddata(X,y):
+def plot3Ddata(X,y,title,block):
     #3D plotting
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')  # the projection arg is important!
     ax.scatter(X[:, 1], X[:, 2], y, color="red")
-    ax.set_title("raw data")
-    plt.show()
+    ax.set_title(title)
+    plt.show(block=block)
 
+def createSurface(range,n,function,parameter):
+    X_grid = prepend_one(grid2d(range[0], range[1], num=n))
+    y = []
+    for x in X_grid:
+        output,weightMats = function(x,parameter)
+        y.append(output)
+    return X_grid,np.array(y)
 
-def initializeWeight(layers):
+def initializeWeight(layers,zero):
     weightMats = []
     for i in range(len(layers)-1):
         l = i#current layer
         l_n = i + 1#next layer
-        weight = np.random.uniform(-1,1,(layers[l_n],layers[l]))
+        if zero:
+            weight = np.zeros((layers[l_n],layers[l]))
+        else:
+            weight = np.random.uniform(-1,1,(layers[l_n],layers[l]))
         weightMats.append(weight)
     return weightMats
 
@@ -56,7 +78,6 @@ def forward(input,weightMats):
         x_record.append(x)
     #output
     z = forward_one_step(x,weightMats[-1],True)
-    # x_record.append(z)
     return z,x_record
 
 def computeDelta(delta,weightMat,x):
@@ -69,23 +90,15 @@ def backward_one_step(x,delta,weightMat):
     temp2 = multiply(x,1-x).T
     return multiply(temp,temp2)
 
-
 #backwawrd propagation
 def backward(loss,weightMats,x_record):
-    delta = loss
-
-    # weightMat_gradient = []
     #first back propagation
+    delta = loss
     weightMat_gradient = [dot(delta.T,x_record[-1].T)]
     r_w = weightMats[::-1]
     r_x = x_record[::-1]
     for x,n_x,weightMat in zip(r_x[:-1],r_x[1:],r_w[:-1]):
-        # x = r_x[i]
-        # weightMat = r_w[i]
-        # n_x = r_x[i+1]
         delta = backward_one_step(x,delta,weightMat)
-        # print "delta",delta.shape
-        # print "n_x",n_x.shape
         weightMat_gradient.append(dot(delta.T,n_x.T))#
     return weightMat_gradient[::-1]
 
@@ -93,38 +106,12 @@ def computeLoss(target,output):
     i = 1 if 1-target*output>0 else 0
     return -target*i
 
-
-
-
 if __name__=="__main__":
     layers = [3,100,1]
-    weightMats = initializeWeight(layers)
+    weightMats = initializeWeight(layers,True)
     sumedWeightMats = list(weightMats)
-    print "weight matrix shape"
-    for weightMat in weightMats:
-        print weightMat.shape
     X,Y = import_data("data2Class_adjusted.txt")
-    # print X.shape
-    # test = np.zeros(5)
-
-    # print element_wise_sigmoid(test)
-    # plot3Ddata(X,y)
-    test_x = np.reshape(X[0,:],(1,3))
-    test_y = Y[0]
-    output,x_record = forward(test_x,weightMats)
-    # print output
-    loss = computeLoss(test_y,output)
-    print "x record shape"
-    for x in x_record:
-        print x.shape
-    # print backward_one_step(x_record[1],2,weightMats[1]).shape
-    print "gradient shape"
-    weightMats_gradient = backward(np.array([[loss]]),weightMats,x_record)
-    for gradient in weightMats_gradient:
-        print gradient.shape
-
-    #estimate gradient
-    # sumedLoss = 0
+    plot3Ddata(X,Y,"raw data",False)
     for it in range(500):
         sumedLoss = 0
         for x,y in zip(X,Y):
@@ -136,7 +123,9 @@ if __name__=="__main__":
             weightMats_gradient = backward(np.array([[loss]]), weightMats, x_record)
             for i in range(len(sumedWeightMats)):
                 sumedWeightMats[i] -= .05*weightMats_gradient[i]
-        print sumedLoss
+        print it,sumedLoss[0]
         weightMats = list(sumedWeightMats)
-
-    # print computeLoss(1,-1)
+    X_surface,predict_y = createSurface((-3,3),50,forward,weightMats)
+    # print X_surface.shape
+    # print predict_y.shape
+    plot3Ddata(X_surface,element_wise_sigmoid(predict_y),"predict surface",True)
