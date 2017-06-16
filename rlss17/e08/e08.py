@@ -4,8 +4,10 @@ from numpy.linalg import norm
 from numpy import dot
 sys.path.insert(0, '../e07')
 sys.path.insert(0,'../../mlss17/e06')
+sys.path.insert(0,'../../mlss17/e02')
 # from e06gmm import gaussian_evaluate
 from e07 import cartPole, Rporp,sampleFromPolicy,samplePerturbation,evaluatePolicy
+from e02 import fit_data, square_error
 from math import sqrt,exp,pi
 from matplotlib import pyplot as plt
 
@@ -102,6 +104,15 @@ def GPOMDP(trajectories,omega,std):
 
     return gradient
 
+def import_data(filename):
+    # load the data
+    data = np.loadtxt(filename)
+    # print "data.shape:", data.shape
+    # np.savetxt("tmp.txt", data)  # save data if you want to
+
+    # split into features and labels
+    X, y = data[:, :4], data[:, 4]
+    return X,y
 
 
 
@@ -109,6 +120,13 @@ def GPOMDP(trajectories,omega,std):
 
 
 if __name__ == "__main__":
+    #LfD
+    X, y = import_data("data.txt")
+    #linear regression
+    omega = fit_data(X,y,0.5,"")
+    print square_error(X,omega,y)
+
+    #Policy gradient
     initState = np.zeros(4)
     omega = np.zeros(4)
     std = sqrt(.5)
@@ -116,7 +134,7 @@ if __name__ == "__main__":
     steps = np.ones(4) * alpha
     prev_g = np.zeros(4)
     expect_reward_list = []
-    for i in range(200):
+    for i in range(0):
         trajectories,sumed_reward = sampleTrajectory(omega,std)
         # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=False)
         gradient = GPOMDP(trajectories,omega,std)
@@ -131,3 +149,5 @@ if __name__ == "__main__":
         print expect_reward,gradient,omega
     # print evaluate_gaussian(0,sqrt(0.5),0)
     plot(expect_reward_list,"J")
+
+    # print X.shape,y.shape
