@@ -54,12 +54,12 @@ def sampleFromPolicy(mean,std=math.sqrt(0.001)):
 def samplePerturbation(size):
     return np.random.uniform(-1,1,size=size)
 
-def evaluatePolicy(omega):
+def evaluatePolicy(omega,n=50,max=1000):
     reward_list = []
-    for i_episode in range(50):
+    for i_episode in range(n):
         observation = np.zeros(4)
         sumOfReward = 0
-        for t in range(1000):
+        for t in range(max):
             action = sampleFromPolicy(mean=dot(observation,omega))
             observation,reward = cartPole(observation,action)
             sumOfReward += reward
@@ -130,14 +130,14 @@ if __name__ == "__main__":
         if old_expect>800:
             delta_omega, alpha = wolfCondition(alpha,omega,gradientFD) #wolfe condition+line search
         else:
-            delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4) #adaptive step-size
-            # alpha = 10./(i+1) #decreasing step-size
+            # delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4) #adaptive step-size
+            alpha = 10./(i+1) #decreasing step-size
             delta_omega = alpha*gradientFD/(norm(gradientFD)+0.01)
         omega += delta_omega
         expectReward = evaluatePolicy(omega)
         old_expect = expectReward
         reward_list.append(expectReward)
-        print i, expectReward,alpha,omega
+        print i, expectReward,alpha,gradientFD,omega
     plt.plot(reward_list,label="J")
     plt.legend(loc='lower right')
     plt.show()
