@@ -118,11 +118,11 @@ if __name__ == "__main__":
     expect_reward_list = []
     for i in range(200):
         trajectories,sumed_reward = sampleTrajectory(omega,std)
-        # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=True)
+        # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=False)
         gradient = GPOMDP(trajectories,omega,std)
         # alpha = 10./(i+1.)
         gradient /= (norm(gradient)+.1)
-        # delta_omega,prev_g,steps = Rporp(gradient,prev_g,steps,4)
+        delta_omega,prev_g,steps = Rporp(gradient,prev_g,steps,4)
         # omega += alpha*gradient/(norm(gradient)+.1)
         # omega += delta_omega
         omega += alpha*gradient
