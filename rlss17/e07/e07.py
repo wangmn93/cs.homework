@@ -2,9 +2,10 @@ import numpy as np
 import math
 from numpy.linalg import inv,norm
 from numpy import dot
-from math import cos,sin
+from math import cos,sin,exp
 from matplotlib import  pyplot as plt
 
+#dynamic of cartpole
 def cartPole(state,action):
     GRAVITY = 9.8
     MASSCART = 1.0
@@ -127,11 +128,11 @@ if __name__ == "__main__":
     old_expect = 0
     for i in range(200):
         gradientFD = computeAscentGradient(omega,M)
-        if old_expect>800:
+        if old_expect>1200:
             delta_omega, alpha = wolfCondition(alpha,omega,gradientFD) #wolfe condition+line search
         else:
             # delta_omega,prev_g,steps = Rporp(gradientFD,prev_g,steps,4) #adaptive step-size
-            alpha = 10./(i+1) #decreasing step-size
+            alpha = 10.*exp(-i/5.) #decreasing step-size
             delta_omega = alpha*gradientFD/(norm(gradientFD)+0.01)
         omega += delta_omega
         expectReward = evaluatePolicy(omega)

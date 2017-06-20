@@ -34,10 +34,11 @@ def sampleTrajectory(omega,std,M=50,maxSteps=2000):
             sum += reward
             trajectory.append((observation,action,reward,next_observation))
             observation = next_observation
-            if reward == -1:
+            if reward == -1 or t == maxSteps-1:
                 sumed_reward.append(sum)
                 trajectories.append(trajectory)
                 break
+
     return trajectories,sumed_reward
 
 
@@ -114,40 +115,41 @@ def import_data(filename):
     X, y = data[:, :4], data[:, 4]
     return X,y
 
-
-
-
-
-
 if __name__ == "__main__":
-    #LfD
-    X, y = import_data("data.txt")
-    #linear regression
-    omega = fit_data(X,y,0.5,"")
-    print square_error(X,omega,y)
-
-    #Policy gradient
+   #Policy gradient
     initState = np.zeros(4)
     omega = np.zeros(4)
+
+   # LfD
+    X, y = import_data("data.txt")  # linear regression
+    omega = fit_data(X, y, 0.5, "")
+    square_error(X, omega, y)
+
     std = sqrt(.5)
     alpha = .5
     steps = np.ones(4) * alpha
     prev_g = np.zeros(4)
     expect_reward_list = []
-    for i in range(0):
-        trajectories,sumed_reward = sampleTrajectory(omega,std)
-        # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=False)
+    for i in range(200):
+        trajectories,sumed_reward = sampleTrajectory(omega,std,M=50)
+        # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=True)
         gradient = GPOMDP(trajectories,omega,std)
-        # alpha = 10./(i+1.)
-        gradient /= (norm(gradient)+.1)
-        delta_omega,prev_g,steps = Rporp(gradient,prev_g,steps,4)
+        alpha = 10./(i+1.)
+        delta_omega = alpha*gradient/(norm(gradient)+.1)
+        # delta_omega,prev_g,steps = Rporp(delta_omega,prev_g,steps,4)
         # omega += alpha*gradient/(norm(gradient)+.1)
-        # omega += delta_omega
-        omega += alpha*gradient
+        omega += delta_omega
+        # omega += alpha*gradient
         expect_reward = evaluatePolicy(omega,10,2000)
         expect_reward_list.append(expect_reward)
         print expect_reward,gradient,omega
     # print evaluate_gaussian(0,sqrt(0.5),0)
+    for i in range(10):
+        print evaluatePolicy(omega,10,2000)
     plot(expect_reward_list,"J")
+
+    # print evaluate_gaussian(0,std,1)
+
+
 
     # print X.shape,y.shape
