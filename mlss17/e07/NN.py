@@ -103,7 +103,7 @@ def computeLoss(target,output):
 
 if __name__=="__main__":
     layers = [3,100,1]
-    weightMats = initializeWeight(layers,True)
+    weightMats = initializeWeight(layers,False)
     sumedWeightMats = list(weightMats)
     X,Y = import_data("data2Class_adjusted.txt")
     plot3Ddata(X,Y,"raw data",False)

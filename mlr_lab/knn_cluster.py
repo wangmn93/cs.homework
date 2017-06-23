@@ -105,8 +105,8 @@ if __name__ == "__main__":
         if maxCnt != None:
 
             # n=20 #number of points
-            points = cv2.approxPolyDP(maxCnt,1,True)
-            # points = maxCnt
+            points = cv2.approxPolyDP(maxCnt,.3,True)
+            points = maxCnt
             print "num of points",len(points)
 
             # print points
@@ -117,7 +117,7 @@ if __name__ == "__main__":
             # for p in points:
             #     cv2.circle(image,(p[0],p[1]),3,(0,0,255),1)
             K = max([2,len(points)/12])
-            K =7
+            K =9
             print "K ",K
             # init = randomInit(K,2,500)
             # init = np.array([[200,100],[200,200],[200,300],[200,400],[200,500]])
