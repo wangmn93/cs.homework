@@ -1,0 +1,73 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+\graphicspath{{../}}
+%opening
+\title{RL exercise 08 }
+\author{Mengnan Wang}
+
+\begin{document}
+
+\maketitle
+
+\section{Policy gradient method}
+\subsection{Vanilla policy gradient}
+\paragraph{}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{vanilla-fixed-alpha.png}
+	\caption{\label{fig:vanilla-fixed-alpha}Vanilla policy gradient with fixed step size $alpha=0.5$}
+	\end{figure}
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\linewidth]{vanilla-fixed-alpha.png}
+		\caption{\label{fig:vanilla-exp-decay}Vanilla policy gradient with existential decay step size $alpha=10\exp_{-t}$}
+	\end{figure}
+	\begin{figure}[!htb]
+		\centering
+		\includegraphics[width=\linewidth]{vanilla-Rprop.png}
+		\caption{\label{fig:vanilla-Rprop}Vanilla policy gradient with Rprop $alpha=0.5$}
+	\end{figure}
+	
+\subsection{REINFORCE}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{REINFORCE-fixed-alpha.png}
+	\caption{\label{fig:REINFORCE-fixed-alpha}REINFORCE with Rprop $alpha=0.5$}
+\end{figure}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{REINFORCE-exp-decay.png}
+	\caption{\label{fig:REINFORCE-exp-decay}REINFORCE with Rprop $alpha=0.5$}
+\end{figure}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{REINFORCE-Rprop.png}
+	\caption{\label{fig:REINFORCE-Rprop}REINFORCE with Rprop $alpha=0.5$}
+\end{figure}
+\subsection{G(PO)MDP}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{GPOMDP-fixed-alpha.png}
+	\caption{\label{fig:GPOMDP-fixed-alpha}REINFORCE with Rprop $alpha=0.5$}
+\end{figure}
+
+\section{Learning from demonstrations}
+\paragraph{} 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{wolfe.png}
+	\caption{\label{fig:LfD-}Wolfe condition and line search}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{decrease.png}
+	\caption{\label{fig:decrease}Decreasing step-size$\alpha_t=\frac{10}{t}$}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{wolfe+decrease.png}
+	\caption{\label{fig:wolfe+decrease}Combined step-size}
+\end{figure}
+
+
+\end{document}

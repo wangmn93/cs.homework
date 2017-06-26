@@ -122,8 +122,8 @@ if __name__ == "__main__":
 
    # LfD
     X, y = import_data("data.txt")  # linear regression
-    omega = fit_data(X, y, 0.5, "")
-    square_error(X, omega, y)
+    # omega = fit_data(X, y, 0.5, "")
+    # square_error(X, omega, y)
 
     std = sqrt(.5)
     alpha = .5
@@ -132,8 +132,8 @@ if __name__ == "__main__":
     expect_reward_list = []
     for i in range(200):
         trajectories,sumed_reward = sampleTrajectory(omega,std,M=50)
-        # gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=True)
-        gradient = GPOMDP(trajectories,omega,std)
+        gradient = REINFORCE(trajectories,sumed_reward,omega,std,baseline=True)
+        # gradient = GPOMDP(trajectories,omega,std)
         alpha = 10./(i+1.)
         delta_omega = alpha*gradient/(norm(gradient)+.1)
         # delta_omega,prev_g,steps = Rporp(delta_omega,prev_g,steps,4)

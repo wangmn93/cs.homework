@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.10)  18 JUN 2017 22:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.10)  20 JUN 2017 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**rlex07.tex
-(./rlex07.tex
+**rlex08.tex
+(./rlex08.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -55,8 +55,8 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(./rlex07.aux)
-\openout1 = `rlex07.aux'.
+No file rlex08.aux.
+\openout1 = `rlex08.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -70,7 +70,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count88
 \scratchdimen=\dimen105
@@ -137,66 +137,135 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 10.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 10.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 13.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 13.
 
-<figures/FD.png, id=1, 586.8324pt x 442.2924pt>
-File: figures/FD.png Graphic file (type png)
- <use figures/FD.png>
-Package pdftex.def Info: figures/FD.png used on input line 16.
+<../vanilla-fixed-alpha.png, id=1, 578.16pt x 433.62pt>
+File: ../vanilla-fixed-alpha.png Graphic file (type png)
+
+<use ../vanilla-fixed-alpha.png>
+Package pdftex.def Info: ../vanilla-fixed-alpha.png used on input line 17.
+(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 18.
+File: ../vanilla-fixed-alpha.png Graphic file (type png)
+ <use ../vanilla-fixed-alpha.png>
+Package pdftex.def Info: ../vanilla-fixed-alpha.png used on input line 22.
+(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
+
+<../vanilla-Rprop.png, id=3, 586.8324pt x 442.2924pt>
+File: ../vanilla-Rprop.png Graphic file (type png)
+
+<use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 27.
 (pdftex.def)             Requested size: 345.0pt x 260.03241pt.
- [1
+File: ../vanilla-Rprop.png Graphic file (type png)
+ <use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 33.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
+File: ../vanilla-Rprop.png Graphic file (type png)
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./figures/FD.png>]
-<figures/wolfe.png, id=14, 578.16pt x 433.62pt>
-File: figures/wolfe.png Graphic file (type png)
- <use figures/wolfe.png>
-Package pdftex.def Info: figures/wolfe.png used on input line 25.
-(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
+<use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 38.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
+File: ../vanilla-Rprop.png Graphic file (type png)
+ <use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 43.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
+File: ../vanilla-Rprop.png Graphic file (type png)
 
-<figures/decrease.png, id=15, 578.16pt x 433.62pt>
-File: figures/decrease.png Graphic file (type png)
- <use figures/decrease.png>
-Package pdftex.def Info: figures/decrease.png used on input line 30.
-(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
+<use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 49.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
+File: ../vanilla-Rprop.png Graphic file (type png)
+ <use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 54.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
+File: ../vanilla-Rprop.png Graphic file (type png)
 
-<figures/wolfe+decrease.png, id=16, 578.16pt x 433.62pt>
-File: figures/wolfe+decrease.png Graphic file (type png)
+<use ../vanilla-Rprop.png>
+Package pdftex.def Info: ../vanilla-Rprop.png used on input line 59.
+(pdftex.def)             Requested size: 345.0pt x 260.03241pt.
 
-<use figures/wolfe+decrease.png>
-Package pdftex.def Info: figures/wolfe+decrease.png used on input line 35.
-(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
 
-<figures/FD_Rprop.png, id=17, 578.16pt x 433.62pt>
-File: figures/FD_Rprop.png Graphic file (type png)
- <use figures/FD_Rprop.png>
-Package pdftex.def Info: figures/FD_Rprop.png used on input line 43.
-(pdftex.def)             Requested size: 345.0pt x 258.74484pt.
+LaTeX Warning: File `wolfe.png' not found on input line 67.
 
-[2 <./figures/wolfe.png>] [3 <./figures/decrease.png>] [4 <./figures/wolfe+decr
-ease.png>] [5 <./figures/FD_Rprop.png>] (./rlex07.aux) ) 
+
+! Package pdftex.def Error: File `wolfe.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.67 ...cludegraphics[width=\linewidth]{wolfe.png}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <../vanilla-fixed-alpha.png
+>]
+
+LaTeX Warning: File `decrease.png' not found on input line 72.
+
+
+! Package pdftex.def Error: File `decrease.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.72 ...degraphics[width=\linewidth]{decrease.png}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `wolfe+decrease.png' not found on input line 77.
+
+
+! Package pdftex.def Error: File `wolfe+decrease.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 ...hics[width=\linewidth]{wolfe+decrease.png}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[2] [3 <../vanilla-Rprop.png>] [4] [5] [6] [7] [8] [9] [10] [11] [12]
+(./rlex08.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1519 strings out of 494953
- 21787 string characters out of 6180977
- 74722 words of memory out of 5000000
- 4808 multiletter control sequences out of 15000+600000
- 7588 words of font info for 27 fonts, out of 8000000 for 9000
+ 1512 strings out of 494953
+ 21651 string characters out of 6180977
+ 76677 words of memory out of 5000000
+ 4802 multiletter control sequences out of 15000+600000
+ 8063 words of font info for 29 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,6n,23p,554b,231s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr7.pfb>
-Output written on rlex07.pdf (5 pages, 208994 bytes).
+ 37i,6n,23p,238b,234s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmtt10.pfb>
+Output written on rlex08.pdf (12 pages, 160609 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 84 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

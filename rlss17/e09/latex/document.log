@@ -1,0 +1,300 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.4.10)  26 JUN 2017 21:06
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**document.tex
+(./document.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen105
+\captionmargin@=\dimen106
+\captionwidth=\dimen107
+\caption@tempdima=\dimen108
+\caption@indent=\dimen109
+\caption@parindent=\dimen110
+\caption@hangindent=\dimen111
+)
+\c@ContinuedFloat=\count88
+)
+\c@subfigure=\count89
+\c@subtable=\count90
+)
+(./document.aux)
+\openout1 = `document.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count91
+\scratchdimen=\dimen112
+\scratchbox=\box26
+\nofMPsegments=\count92
+\nofMParguments=\count93
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count94
+\MPscratchDim=\dimen113
+\MPnumerator=\count95
+\makeMPintoPDFobject=\count96
+\everyMPtoPDFconversion=\toks16
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 12.
+
+<images/up_policy.png, id=1, 166.6225pt x 103.38625pt>
+File: images/up_policy.png Graphic file (type png)
+
+<use images/up_policy.png>
+Package pdftex.def Info: images/up_policy.png used on input line 22.
+(pdftex.def)             Requested size: 147.48839pt x 91.51968pt.
+
+<images/left_policy.png, id=2, 165.61874pt x 100.375pt>
+File: images/left_policy.png Graphic file (type png)
+
+<use images/left_policy.png>
+Package pdftex.def Info: images/left_policy.png used on input line 27.
+(pdftex.def)             Requested size: 147.48839pt x 89.39165pt.
+
+<images/right_policy.png, id=3, 159.59625pt x 101.37875pt>
+File: images/right_policy.png Graphic file (type png)
+
+<use images/right_policy.png>
+Package pdftex.def Info: images/right_policy.png used on input line 32.
+(pdftex.def)             Requested size: 147.48839pt x 93.68878pt.
+
+<images/down_policy.png, id=4, 158.5925pt x 96.36pt>
+File: images/down_policy.png Graphic file (type png)
+
+<use images/down_policy.png>
+Package pdftex.def Info: images/down_policy.png used on input line 37.
+(pdftex.def)             Requested size: 147.48839pt x 89.61972pt.
+
+<images/basic_q.png, id=5, 404.51125pt x 255.95625pt>
+File: images/basic_q.png Graphic file (type png)
+ <use images/basic_q.png>
+Package pdftex.def Info: images/basic_q.png used on input line 49.
+(pdftex.def)             Requested size: 163.8771pt x 103.69295pt.
+
+<images/basic_q_value_plot.png, id=6, 578.16pt x 433.62pt>
+File: images/basic_q_value_plot.png Graphic file (type png)
+
+<use images/basic_q_value_plot.png>
+Package pdftex.def Info: images/basic_q_value_plot.png used on input line 54.
+(pdftex.def)             Requested size: 147.48839pt x 110.61464pt.
+
+<images/naive_update_policy.png, id=8, 406.51875pt x 252.945pt>
+File: images/naive_update_policy.png Graphic file (type png)
+
+<use images/naive_update_policy.png>
+Package pdftex.def Info: images/naive_update_policy.png used on input line 63.
+(pdftex.def)             Requested size: 163.8771pt x 101.96742pt.
+
+<images/naive_update_value_plot.png, id=9, 578.16pt x 433.62pt>
+File: images/naive_update_value_plot.png Graphic file (type png)
+
+<use images/naive_update_value_plot.png>
+Package pdftex.def Info: images/naive_update_value_plot.png used on input line 
+68.
+(pdftex.def)             Requested size: 147.48839pt x 110.61464pt.
+
+<images/update_1_policy.png, id=10, 409.53pt x 252.945pt>
+File: images/update_1_policy.png Graphic file (type png)
+
+<use images/update_1_policy.png>
+Package pdftex.def Info: images/update_1_policy.png used on input line 77.
+(pdftex.def)             Requested size: 163.8771pt x 101.21866pt.
+
+<images/update_1_value_plot.png, id=11, 578.16pt x 433.62pt>
+File: images/update_1_value_plot.png Graphic file (type png)
+
+<use images/update_1_value_plot.png>
+Package pdftex.def Info: images/update_1_value_plot.png used on input line 82.
+(pdftex.def)             Requested size: 147.48839pt x 110.61464pt.
+
+<images/update_2_policy.png, id=12, 402.50375pt x 254.9525pt>
+File: images/update_2_policy.png Graphic file (type png)
+
+<use images/update_2_policy.png>
+Package pdftex.def Info: images/update_2_policy.png used on input line 91.
+(pdftex.def)             Requested size: 163.8771pt x 103.79982pt.
+
+<images/update_2_value_plot.png, id=13, 578.16pt x 433.62pt>
+File: images/update_2_value_plot.png Graphic file (type png)
+
+<use images/update_2_value_plot.png>
+Package pdftex.def Info: images/update_2_value_plot.png used on input line 96.
+(pdftex.def)             Requested size: 147.48839pt x 110.61464pt.
+
+<images/update_2_policy2.png, id=14, 403.5075pt x 248.93pt>
+File: images/update_2_policy2.png Graphic file (type png)
+
+<use images/update_2_policy2.png>
+Package pdftex.def Info: images/update_2_policy2.png used on input line 105.
+(pdftex.def)             Requested size: 163.8771pt x 101.09717pt.
+
+<images/update_2_value_plot2.png, id=15, 578.16pt x 433.62pt>
+File: images/update_2_value_plot2.png Graphic file (type png)
+
+<use images/update_2_value_plot2.png>
+Package pdftex.def Info: images/update_2_value_plot2.png used on input line 110
+.
+(pdftex.def)             Requested size: 147.48839pt x 110.61464pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 117.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 117.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./images/up_policy.png
+ (PNG copy)> <./images/left_policy.png (PNG copy)> <./images/right_policy.png (
+PNG copy)> <./images/down_policy.png (PNG copy)> <./images/basic_q.png (PNG cop
+y)> <./images/basic_q_value_plot.png>]
+[3 <./images/naive_update_policy.png (PNG copy)> <./images/naive_update_value_p
+lot.png> <./images/update_1_policy.png (PNG copy)> <./images/update_1_value_plo
+t.png> <./images/update_2_policy.png (PNG copy)> <./images/update_2_value_plot.
+png>] [4 <./images/update_2_policy2.png (PNG copy)> <./images/update_2_value_pl
+ot2.png>] (./document.aux) ) 
+Here is how much of TeX's memory you used:
+ 2684 strings out of 494953
+ 43396 string characters out of 6180977
+ 100542 words of memory out of 5000000
+ 5955 multiletter control sequences out of 15000+600000
+ 8194 words of font info for 29 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 42i,8n,40p,408b,450s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+Output written on document.pdf (4 pages, 186573 bytes).
+PDF statistics:
+ 69 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+

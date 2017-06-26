@@ -18,13 +18,14 @@ def roomShift(state):
             shift = (-6,-6)
     return shift
 
+
 def eps_greedy(q_value,current,eps):
     if np.random.uniform()<eps:
         return random.choice(range(len(q_value[current[0],current[1],:])))
     else:
         return np.argmax(q_value[current[0],current[1],:],0)
 
-
+#Q learning
 def learning(environment,q_value,goal,max,options=[],policies=[],terminations=[]):
     it = 0
     alpha = .3
@@ -92,13 +93,13 @@ def learning(environment,q_value,goal,max,options=[],policies=[],terminations=[]
                 else:
                     current2 = next
             #naive update
-            if 0:
+            if 1:
                 diff = reward + gamma**k * q_value[next[0], next[1], eps_greedy(q_value, next, .0)] - q_value[
                     current[0], current[1], action]
                 q_value[current[0], current[1], action] = q_value[current[0], current[1], action] + alpha * diff
 
             # update type 1
-            if 1:
+            if 0:
                 for exp in exp_list:
                     c = exp[0]
                     a = exp[1]
@@ -110,6 +111,7 @@ def learning(environment,q_value,goal,max,options=[],policies=[],terminations=[]
                     diff = r + gamma ** (k-l) * q_value[next[0], next[1], eps_greedy(q_value, next, .0)] - q_value[
                             c[0], c[1], action]
                     q_value[c[0], c[1], action] = q_value[c[0], c[1], action] + alpha * diff
+
             # update type 2
             if 0:
                 for exp in exp_list:
@@ -220,8 +222,8 @@ if __name__ == "__main__":
     q_value = np.ones((13,13,8))
     environment.reset()
     # learning(environment, q_value, target, 10000)
-    learning(environment,q_value,target,1000,options=options,policies=[up_door,left_door,right_door,down_door],terminations=terminations)
+    learning(environment,q_value,target,10000,options=options,policies=[up_door,left_door,right_door,down_door],terminations=terminations)
     plotPolicy(grid,q_value,target,option=['|U','|L','|R','|D'])
-    pylab.pcolor(q_value.reshape((13*13,8)).max(1).reshape((13,13)))
+    pylab.pcolor(q_value.reshape((13*13,8)).max(1).reshape((13,13)))#modify to adapt options
     pylab.show()
 
